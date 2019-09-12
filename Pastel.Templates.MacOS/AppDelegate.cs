@@ -22,12 +22,6 @@ namespace Pastel.Templates.MacOS
 
         public override void DidFinishLaunching(NSNotification notification)
         {
-            // Insert code here to initialize your application
-            // while (_window.Visibile)
-            // {
-            //     _window.RunEvents();
-            // }
-
             var game = new PastelGame();
 
             game.Run();
