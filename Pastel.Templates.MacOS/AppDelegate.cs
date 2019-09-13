@@ -1,13 +1,6 @@
-﻿using System;
-using System.Text;
-using AppKit;
+﻿using AppKit;
 using Foundation;
-using OpenTK;
 using Pastel.Core.Models;
-using Pastel.Core.Platform.Graphics;
-using Pastel.Core.Platform.Window;
-using Veldrid;
-using Veldrid.SPIRV;
 
 namespace Pastel.Templates.MacOS
 {
@@ -27,9 +20,9 @@ namespace Pastel.Templates.MacOS
             game.Run();
         }
 
-        public override void WillTerminate(NSNotification notification)
+        public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
         {
-            // Insert code here to tear down your application
+            return true;
         }
     }
 }
