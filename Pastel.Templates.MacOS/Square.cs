@@ -9,20 +9,20 @@ namespace Pastel.Templates.MacOS
 {
     public class Square: PastelObject
     {
+        public float Size;
         bool forward = true;
         int red, green, blue;
-        Vector2 P1, P2, P3, P4;
+
+        private Vector2 p1, p2, p3, p4;
         private VertexPositionColor[] quadVertices;
         private ushort[] quadIndices;
         private DeviceBuffer vertexBuffer;
         private DeviceBuffer indexBuffer;
 
-        public Square(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4)
+        public Square(Vector2 position, float size)
         {
-            P1 = p1;
-            P2 = p2;
-            P3 = p3;
-            P4 = p4;
+            Position = position;
+            Size = size;
         }
 
 
@@ -32,9 +32,6 @@ namespace Pastel.Templates.MacOS
 
             vertexBuffer = factory.CreateBuffer(new BufferDescription(4 * VertexPositionColor.SizeInBytes, BufferUsage.VertexBuffer));
             indexBuffer = factory.CreateBuffer(new BufferDescription(4 * sizeof(ushort), BufferUsage.IndexBuffer));
-
-            
-
         }
 
         public override void Update()
@@ -90,24 +87,30 @@ namespace Pastel.Templates.MacOS
                     red -= 1;
                 }
             }
+
+            var screenSize = Size / 100f * 2f;
+            p1 = new Vector2(Position.X - 1, (Position.Y - 1) + screenSize);
+            p2 = new Vector2((Position.X - 1) + screenSize, (Position.Y - 1) + screenSize);
+            p3 = new Vector2(Position.X - 1, Position.Y - 1);
+            p4 = new Vector2(Position.X - 1 + screenSize , Position.Y - 1);
+
         }
 
         public override void Draw()
         {
-            //base.Draw();
             quadVertices = new[]
             {
                 new VertexPositionColor(
-                    P1,
+                    p1,
                     new RgbaFloat(red / 64f, green / 64f, blue / 64f, 1f)),
                 new VertexPositionColor(
-                    P2,
+                    p2,
                     new RgbaFloat(red / 64f, blue / 64f, green / 64f, 1f)),
                 new VertexPositionColor(
-                    P3,
+                    p3,
                     new RgbaFloat(green / 64f, blue / 64f, red / 64f, 1f)),
                 new VertexPositionColor(
-                    P4,
+                    p4,
                     new RgbaFloat(blue / 64f, red / 64f, green / 64f, 1f))
             };
 

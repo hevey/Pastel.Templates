@@ -17,32 +17,36 @@ namespace Pastel.Templates.MacOS
         public override void DidFinishLaunching(NSNotification notification)
         {
             var square = new Square(
-                new Vector2(-.75f, .75f),
-                new Vector2(-.25f, .75f),
-                new Vector2(-.75f, .25f),
-                new Vector2(-.25f, .25f));
+                    new Vector2(0f, 0f), 50f);
             square.CreateResources();
 
-            var square2 = new Square(
-                new Vector2(.25f, .75f),
-                new Vector2(.75f, .75f),
-                new Vector2(.25f, .25f),
-                new Vector2(.75f, .25f));
-            square2.CreateResources();
+            //var square = new Square(
+            //    new Vector2(-.75f, .75f),
+            //    new Vector2(-.25f, .75f),
+            //    new Vector2(-.75f, .25f),
+            //    new Vector2(-.25f, .25f));
+            //square.CreateResources();
 
-            var square3 = new Square(
-                new Vector2(-.75f, -.25f),
-                new Vector2(-.25f, -.25f),
-                new Vector2(-.75f, -.75f),
-                new Vector2(-.25f, -.75f));
-            square3.CreateResources();
+            //var square2 = new Square(
+            //    new Vector2(.25f, .75f),
+            //    new Vector2(.75f, .75f),
+            //    new Vector2(.25f, .25f),
+            //    new Vector2(.75f, .25f));
+            //square2.CreateResources();
 
-            var square4 = new Square(
-                new Vector2( .25f, -.25f),
-                new Vector2( .75f, -.25f),
-                new Vector2( .25f, -.75f),
-                new Vector2( .75f, -.75f));
-            square4.CreateResources();
+            //var square3 = new Square(
+            //    new Vector2(-.75f, -.25f),
+            //    new Vector2(-.25f, -.25f),
+            //    new Vector2(-.75f, -.75f),
+            //    new Vector2(-.25f, -.75f));
+            //square3.CreateResources();
+
+            //var square4 = new Square(
+            //    new Vector2( .25f, -.25f),
+            //    new Vector2( .75f, -.25f),
+            //    new Vector2( .25f, -.75f),
+            //    new Vector2( .75f, -.75f));
+            //square4.CreateResources();
 
             game = new PastelGame();
             game.Run();
