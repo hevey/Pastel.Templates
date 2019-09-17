@@ -1,6 +1,6 @@
 ﻿using AppKit;
 using Foundation;
-using OpenTK;
+using System.Numerics;
 using Pastel.Core.Models;
 
 namespace Pastel.Templates.MacOS
@@ -16,9 +16,17 @@ namespace Pastel.Templates.MacOS
 
         public override void DidFinishLaunching(NSNotification notification)
         {
-            var square = new Square(
-                    new Vector2(0f, 0f), 50f);
-            square.CreateResources();
+            var rectangle1 = new Rectangle(new Vector2(-0.5f, 0.5f), 10);
+            rectangle1.CreateResources();
+
+            var rectangle2 = new Rectangle(new Vector2(0.5f, 0.5f), 25);
+            rectangle2.CreateResources();
+
+            var rectangle3 = new Rectangle(new Vector2(0.5f, -0.5f), 50);
+            rectangle3.CreateResources();
+
+            var rectangle4 = new Rectangle(new Vector2(-0.5f, -0.5f), 45);
+            rectangle4.CreateResources();
 
             //var square = new Square(
             //    new Vector2(-.75f, .75f),

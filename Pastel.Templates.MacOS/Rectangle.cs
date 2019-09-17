@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using OpenTK;
+using System.Numerics;
 using Pastel.Core.Models;
 using Veldrid;
 using Veldrid.SPIRV;
 
 namespace Pastel.Templates.MacOS
 {
-    public class Square: PastelObject
+    public class Rectangle: PastelObject
     {
         public float Size;
         bool forward = true;
@@ -19,7 +19,7 @@ namespace Pastel.Templates.MacOS
         private DeviceBuffer vertexBuffer;
         private DeviceBuffer indexBuffer;
 
-        public Square(Vector2 position, float size)
+        public Rectangle(Vector2 position, float size)
         {
             Position = position;
             Size = size;
@@ -88,11 +88,11 @@ namespace Pastel.Templates.MacOS
                 }
             }
 
-            var screenSize = Size / 100f * 2f;
-            p1 = new Vector2(Position.X - 1, (Position.Y - 1) + screenSize);
-            p2 = new Vector2((Position.X - 1) + screenSize, (Position.Y - 1) + screenSize);
-            p3 = new Vector2(Position.X - 1, Position.Y - 1);
-            p4 = new Vector2(Position.X - 1 + screenSize , Position.Y - 1);
+            var screenSize = Size / 100f;
+            p1 = new Vector2(Position.X - screenSize, Position.Y + screenSize);
+            p2 = new Vector2(Position.X + screenSize, Position.Y + screenSize);
+            p3 = new Vector2(Position.X - screenSize, Position.Y - screenSize);
+            p4 = new Vector2(Position.X + screenSize, Position.Y - screenSize);
 
         }
 
