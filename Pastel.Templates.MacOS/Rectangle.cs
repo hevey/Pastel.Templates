@@ -4,6 +4,7 @@ using System.Numerics;
 using Pastel.Core.Models;
 using Veldrid;
 using Veldrid.SPIRV;
+using Pastel.Core.Platform.Input;
 
 namespace Pastel.Templates.MacOS
 {
@@ -88,6 +89,24 @@ namespace Pastel.Templates.MacOS
                 }
             }
 
+            if(InputManager.Buttons.Find(b => b.Name == "Up").pressed == true)
+            {
+                Position.Y += 0.01f;
+            }
+            if (InputManager.Buttons.Find(b => b.Name == "Down").pressed == true)
+            {
+                Position.Y -= 0.01f;
+            }
+            if (InputManager.Buttons.Find(b => b.Name == "Left").pressed == true)
+            {
+                Position.X -= 0.01f;
+            }
+            if (InputManager.Buttons.Find(b => b.Name == "Right").pressed == true)
+            {
+                Position.X += 0.01f;
+            }
+
+
             var screenSize = Size / 100f;
             p1 = new Vector2(Position.X - screenSize, Position.Y + screenSize);
             p2 = new Vector2(Position.X + screenSize, Position.Y + screenSize);
@@ -142,11 +161,13 @@ namespace Pastel.Templates.MacOS
     {
         public Vector2 Position; // This is the position, in normalized device coordinates.
         public RgbaFloat Color; // This is the color of the vertex.
+
         public VertexPositionColor(Vector2 position, RgbaFloat color)
         {
             Position = position;
             Color = color;
         }
+
         public const uint SizeInBytes = 24;
     }
 }
