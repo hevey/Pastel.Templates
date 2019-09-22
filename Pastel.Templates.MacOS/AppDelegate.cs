@@ -1,6 +1,6 @@
-﻿using AppKit;
+﻿using System.Numerics;
+using AppKit;
 using Foundation;
-using System.Numerics;
 using Pastel.Core.Models;
 
 namespace Pastel.Templates.MacOS
@@ -8,7 +8,7 @@ namespace Pastel.Templates.MacOS
     [Register("AppDelegate")]
     public class AppDelegate : NSApplicationDelegate
     {
-        PastelGame game;        
+        private PastelGame game;
 
         public override void DidFinishLaunching(NSNotification notification)
         {

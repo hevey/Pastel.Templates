@@ -1,24 +1,22 @@
-﻿using System;
-using System.Text;
-using System.Numerics;
+﻿using System.Numerics;
 using Pastel.Core.Models;
-using Veldrid;
-using Veldrid.SPIRV;
 using Pastel.Core.Platform.Input;
+using Veldrid;
 
 namespace Pastel.Templates.MacOS
 {
-    public class Rectangle: PastelObject
+    public class Rectangle : PastelObject
     {
         public float Size;
-        bool forward = true;
-        int red, green, blue;
-
-        private Vector2 p1, p2, p3, p4;
-        private VertexPositionColor[] quadVertices;
-        private ushort[] quadIndices;
-        private DeviceBuffer vertexBuffer;
-        private DeviceBuffer indexBuffer;
+        
+        private bool _forward = true;
+        private DeviceBuffer _indexBuffer;
+        private DeviceBuffer _vertexBuffer;
+        private Vector2 _p1, _p2, _p3, _p4;
+        private ushort[] _quadIndices;
+        private VertexPositionColor[] _quadVertices;
+        private int _red, _green, _blue;
+        
 
         public Rectangle(Vector2 position, float size)
         {
@@ -31,133 +29,113 @@ namespace Pastel.Templates.MacOS
         {
             var factory = PastelGame.GraphicsDevice.ResourceFactory;
 
-            vertexBuffer = factory.CreateBuffer(new BufferDescription(4 * VertexPositionColor.SizeInBytes, BufferUsage.VertexBuffer));
-            indexBuffer = factory.CreateBuffer(new BufferDescription(4 * sizeof(ushort), BufferUsage.IndexBuffer));
+            _vertexBuffer =
+                factory.CreateBuffer(new BufferDescription(4 * VertexPositionColor.SizeInBytes,
+                    BufferUsage.VertexBuffer));
+            _indexBuffer = factory.CreateBuffer(new BufferDescription(4 * sizeof(ushort), BufferUsage.IndexBuffer));
         }
 
-        public override void Update()
+        public override void Update(float deltaTime)
         {
-
-            if (forward)
+            if (_forward)
             {
-                if (red == 64)
+                if (_red == 64)
                 {
-                    if (green == 64)
+                    if (_green == 64)
                     {
-                        if (blue == 64)
-                        {
-                            forward = false;
-                        }
+                        if (_blue == 64)
+                            _forward = false;
                         else
-                        {
-                            blue += 1;
-                        }
+                            _blue += 1;
                     }
                     else
                     {
-                        green += 1;
+                        _green += 1;
                     }
                 }
                 else
                 {
-                    red += 1;
+                    _red += 1;
                 }
             }
             else
             {
-                if (red == 0)
+                if (_red == 0)
                 {
-                    if (green == 0)
+                    if (_green == 0)
                     {
-                        if (blue == 0)
-                        {
-                            forward = true;
-                        }
+                        if (_blue == 0)
+                            _forward = true;
                         else
-                        {
-                            blue -= 1;
-                        }
+                            _blue -= 1;
                     }
                     else
                     {
-                        green -= 1;
+                        _green -= 1;
                     }
                 }
                 else
                 {
-                    red -= 1;
+                    _red -= 1;
                 }
             }
 
-            if(InputManager.Buttons.Find(b => b.Name == "Up").pressed == true)
-            {
-                Position.Y += 0.01f;
-            }
-            if (InputManager.Buttons.Find(b => b.Name == "Down").pressed == true)
-            {
-                Position.Y -= 0.01f;
-            }
-            if (InputManager.Buttons.Find(b => b.Name == "Left").pressed == true)
-            {
-                Position.X -= 0.01f;
-            }
-            if (InputManager.Buttons.Find(b => b.Name == "Right").pressed == true)
-            {
-                Position.X += 0.01f;
-            }
+            if (InputManager.Buttons.Find(b => b.Name == "Up").Pressed) Position.Y += 0.005f * deltaTime;
+            if (InputManager.Buttons.Find(b => b.Name == "Down").Pressed) Position.Y -= 0.005f * deltaTime;
+            if (InputManager.Buttons.Find(b => b.Name == "Left").Pressed) Position.X -= 0.005f * deltaTime;
+            if (InputManager.Buttons.Find(b => b.Name == "Right").Pressed) Position.X += 0.005f * deltaTime;
 
 
             var screenSize = Size / 100f;
-            p1 = new Vector2(Position.X - screenSize, Position.Y + screenSize);
-            p2 = new Vector2(Position.X + screenSize, Position.Y + screenSize);
-            p3 = new Vector2(Position.X - screenSize, Position.Y - screenSize);
-            p4 = new Vector2(Position.X + screenSize, Position.Y - screenSize);
-
+            _p1 = new Vector2(Position.X - screenSize, Position.Y + screenSize);
+            _p2 = new Vector2(Position.X + screenSize, Position.Y + screenSize);
+            _p3 = new Vector2(Position.X - screenSize, Position.Y - screenSize);
+            _p4 = new Vector2(Position.X + screenSize, Position.Y - screenSize);
         }
 
         public override void Draw()
         {
-            quadVertices = new[]
+            _quadVertices = new[]
             {
                 new VertexPositionColor(
-                    p1,
-                    new RgbaFloat(red / 64f, green / 64f, blue / 64f, 1f)),
+                    _p1,
+                    new RgbaFloat(_red / 64f, _green / 64f, _blue / 64f, 1f)),
                 new VertexPositionColor(
-                    p2,
-                    new RgbaFloat(red / 64f, blue / 64f, green / 64f, 1f)),
+                    _p2,
+                    new RgbaFloat(_red / 64f, _blue / 64f, _green / 64f, 1f)),
                 new VertexPositionColor(
-                    p3,
-                    new RgbaFloat(green / 64f, blue / 64f, red / 64f, 1f)),
+                    _p3,
+                    new RgbaFloat(_green / 64f, _blue / 64f, _red / 64f, 1f)),
                 new VertexPositionColor(
-                    p4,
-                    new RgbaFloat(blue / 64f, red / 64f, green / 64f, 1f))
+                    _p4,
+                    new RgbaFloat(_blue / 64f, _red / 64f, _green / 64f, 1f))
             };
 
-            quadIndices = new ushort[] { 0, 1, 2, 3 };
+            _quadIndices = new ushort[] {0, 1, 2, 3};
 
-            graphicsDevice.UpdateBuffer(vertexBuffer, 0, quadVertices);
-            graphicsDevice.UpdateBuffer(indexBuffer, 0, quadIndices);
+            GraphicsDevice.UpdateBuffer(_vertexBuffer, 0, _quadVertices);
+            GraphicsDevice.UpdateBuffer(_indexBuffer, 0, _quadIndices);
 
-            PastelGame.CommandList.SetVertexBuffer(0, vertexBuffer);
-            PastelGame.CommandList.SetIndexBuffer(indexBuffer, IndexFormat.UInt16);
+            PastelGame.CommandList.SetVertexBuffer(0, _vertexBuffer);
+            PastelGame.CommandList.SetIndexBuffer(_indexBuffer, IndexFormat.UInt16);
             PastelGame.CommandList.SetPipeline(Pipeline);
             PastelGame.CommandList.DrawIndexed(
-                indexCount: 4,
-                instanceCount: 1,
-                indexStart: 0,
-                vertexOffset: 0,
-                instanceStart: 0);
+                4,
+                1,
+                0,
+                0,
+                0);
         }
 
         public override void Dispose()
         {
             Pipeline.Dispose();
-            vertexBuffer.Dispose();
-            indexBuffer.Dispose();
+            _vertexBuffer.Dispose();
+            _indexBuffer.Dispose();
         }
     }
 
-    struct VertexPositionColor
+    internal struct VertexPositionColor
     {
         public Vector2 Position; // This is the position, in normalized device coordinates.
         public RgbaFloat Color; // This is the color of the vertex.
