@@ -3,7 +3,7 @@ using Pastel.Core.Models;
 using Pastel.Core.Platform.Input;
 using Veldrid;
 
-namespace Pastel.Templates.MacOS
+namespace Pastel.Test
 {
     public class Rectangle : PastelObject
     {

@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pastel.Templates.MacOS", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pastel.Core", "..\Pastel\Pastel.Core\Pastel.Core.csproj", "{8F318123-3E63-4AC0-A765-2BD6A1CD0386}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pastel.Test", "Pastel.Test\Pastel.Test.csproj", "{30E03CE4-A8EE-429F-BA16-6818D077E00D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pastel.Template.iOS", "Pastel.Template.iOS\Pastel.Template.iOS.csproj", "{8BC45760-F9F1-4DAB-B2F1-717F60227449}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,9 +19,25 @@ Global
 		{5D754CA9-112A-4A6A-B89D-D9374B909162}.Debug|x86.Build.0 = Debug|x86
 		{5D754CA9-112A-4A6A-B89D-D9374B909162}.Release|x86.ActiveCfg = Release|x86
 		{5D754CA9-112A-4A6A-B89D-D9374B909162}.Release|x86.Build.0 = Release|x86
+		{5D754CA9-112A-4A6A-B89D-D9374B909162}.Debug | iPhone|Any CPU.ActiveCfg = Debug | iPhone|Any CPU
+		{5D754CA9-112A-4A6A-B89D-D9374B909162}.Debug | iPhone|Any CPU.Build.0 = Debug | iPhone|Any CPU
 		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Debug|x86.Build.0 = Debug|Any CPU
 		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Release|x86.Build.0 = Release|Any CPU
+		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Debug | iPhone|Any CPU.ActiveCfg = Debug | iPhone|Any CPU
+		{8F318123-3E63-4AC0-A765-2BD6A1CD0386}.Debug | iPhone|Any CPU.Build.0 = Debug | iPhone|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Debug|x86.Build.0 = Debug|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Release|x86.ActiveCfg = Release|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Release|x86.Build.0 = Release|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Debug | iPhone|Any CPU.ActiveCfg = Debug | iPhone|Any CPU
+		{30E03CE4-A8EE-429F-BA16-6818D077E00D}.Debug | iPhone|Any CPU.Build.0 = Debug | iPhone|Any CPU
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Release|x86.ActiveCfg = Release|iPhoneSimulator
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Release|x86.Build.0 = Release|iPhoneSimulator
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Debug|x86.ActiveCfg = Debug|iPhone
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Debug|x86.Build.0 = Debug|iPhone
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Debug | iPhone|Any CPU.ActiveCfg = Debug | iPhone|Any CPU
+		{8BC45760-F9F1-4DAB-B2F1-717F60227449}.Debug | iPhone|Any CPU.Build.0 = Debug | iPhone|Any CPU
 	EndGlobalSection
 EndGlobal

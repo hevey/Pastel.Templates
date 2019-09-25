@@ -45,9 +45,14 @@
     <LinkMode>SdkOnly</LinkMode>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug | iPhone|AnyCPU' ">
+    <OutputPath>bin\Debug | iPhone\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
     <Reference Include="Veldrid, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Veldrid.4.7.0\lib\netstandard2.0\Veldrid.dll</HintPath>
       <Private>True</Private>
@@ -100,7 +105,6 @@
     <Reference Include="vk">
       <HintPath>..\packages\Vk.1.0.22\lib\netstandard1.4\vk.dll</HintPath>
     </Reference>
-    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json" />
@@ -117,7 +121,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Rectangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
@@ -126,6 +129,10 @@
     <ProjectReference Include="..\..\Pastel\Pastel.Core\Pastel.Core.csproj">
       <Project>{8f318123-3e63-4ac0-a765-2bd6a1cd0386}</Project>
       <Name>Pastel.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pastel.Test\Pastel.Test.csproj">
+      <Project>{30e03ce4-a8ee-429f-ba16-6818d077e00d}</Project>
+      <Name>Pastel.Test</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

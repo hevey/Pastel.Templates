@@ -2,6 +2,7 @@
 using AppKit;
 using Foundation;
 using Pastel.Core.Models;
+using Pastel.Test;
 
 namespace Pastel.Templates.MacOS
 {
