@@ -7,8 +7,7 @@ namespace Pastel.Test
     {
         public TestGame()
         {
-            var rectangle1 = new Rectangle(new Vector2(0.0f, 0.0f), 10);
-            rectangle1.CreateResources();
+            AddScene(new FirstScene(this));
         }
     }
 }
