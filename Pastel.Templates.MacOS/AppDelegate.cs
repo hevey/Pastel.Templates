@@ -13,10 +13,8 @@ namespace Pastel.Templates.MacOS
 
         public override void DidFinishLaunching(NSNotification notification)
         {
-            var rectangle1 = new Rectangle(new Vector2(-0.5f, 0.5f), 10);
-            rectangle1.CreateResources();
 
-            game = new PastelGame();
+            game = new TestGame();
             game.Run();
         }
 
