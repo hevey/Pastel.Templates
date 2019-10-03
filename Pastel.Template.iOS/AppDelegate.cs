@@ -17,9 +17,6 @@ namespace Pastel.Template.iOS
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
-            game = new TestGame();
-            game.Run();
-
             return true;
         }
 
@@ -30,6 +27,8 @@ namespace Pastel.Template.iOS
         {
             // Called when a new scene session is being created.
             // Use this method to select a configuration to create the new scene with.
+            game = new TestGame();
+            game.Run();
             return UISceneConfiguration.Create("Default Configuration", connectingSceneSession.Role);
         }
 
@@ -39,6 +38,7 @@ namespace Pastel.Template.iOS
             // Called when the user discards a scene session.
             // If any sessions were discarded while the application was not running, this will be called shortly after `FinishedLaunching`.
             // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+            game.QuitGame();
         }
     }
 }

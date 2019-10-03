@@ -22,7 +22,7 @@ namespace Pastel.Test
         public override void SceneUpdate()
         {
             if (InputManager.Buttons.Find(b => b.Name == "Menu").Pressed)
-                Game.ReplaceScene(new SecondScene(Game));
+                Game.AddScene(new SecondScene(Game));
                 
         }
     }

@@ -14,7 +14,7 @@ namespace Pastel.Test
             BackgroundColour = RgbaFloat.DarkRed;
             Game = game;
 
-            var rectangle = new Rectangle(new Vector2(-0.1f, 0.1f), 10);
+            var rectangle = new Rectangle(new Vector2(-0.4f, 0.3f), 20);
             rectangle.CreateResources();
 
             SceneObjects.Add(rectangle);
@@ -23,7 +23,7 @@ namespace Pastel.Test
         public override void SceneUpdate()
         {
             if (InputManager.Buttons.Find(b => b.Name == "Menu").Pressed)
-                Game.ReplaceScene(new FirstScene(Game));
+                Game.RemoveScene();
 
         }
     }

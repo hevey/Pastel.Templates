@@ -25,7 +25,7 @@ namespace Pastel.Templates.MacOS
 
         public override void WillTerminate(NSNotification notification)
         {
-            game.Dispose();
+            game.QuitGame();
         }
     }
 }
