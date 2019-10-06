@@ -22,6 +22,8 @@ namespace Pastel.Test
         {
             Position = position;
             Size = size;
+
+            CreateResources();
         }
 
 
@@ -119,12 +121,7 @@ namespace Pastel.Test
             PastelGame.CommandList.SetVertexBuffer(0, _vertexBuffer);
             PastelGame.CommandList.SetIndexBuffer(_indexBuffer, IndexFormat.UInt16);
             PastelGame.CommandList.SetPipeline(Pipeline);
-            PastelGame.CommandList.DrawIndexed(
-                4,
-                1,
-                0,
-                0,
-                0);
+            PastelGame.CommandList.DrawIndexed(4, 1, 0, 0, 0);
         }
 
         public override void Dispose()

@@ -14,7 +14,6 @@ namespace Pastel.Test
             Game = game;
 
             var rectangle = new Rectangle(new Vector2(0.0f, 0.0f), 10);
-            rectangle.CreateResources();
 
             SceneObjects.Add(rectangle);
         }
