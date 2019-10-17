@@ -13,7 +13,7 @@ namespace Pastel.Test
             BackgroundColour = RgbaFloat.CornflowerBlue;
             Game = game;
 
-            var rectangle = new Rectangle(new Vector2(0.0f, 0.0f), 10);
+            var rectangle = new Sprite();
 
             SceneObjects.Add(rectangle);
         }

@@ -5,8 +5,9 @@ using Veldrid;
 
 namespace Pastel.Test
 {
-    public class Rectangle : PastelObject
+    public class Rectangle : ComputedTexture
     {
+
         public float Size;
         
         private bool _forward = true;
