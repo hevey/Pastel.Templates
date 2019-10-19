@@ -5,7 +5,7 @@ using Veldrid;
 
 namespace Pastel.Test
 {
-    public class Rectangle : ComputedTexture
+    public class Rectangle : Sprite
     {
 
         public float Size;

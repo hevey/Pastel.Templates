@@ -7,10 +7,6 @@ namespace Pastel.Test
     {
         public TestGame()
         {
-            var rec = new Rectangle(new Vector2(0.5f, -0.5f), 10);
-
-            GameObjects.Add(rec);
-
             AddScene(new FirstScene(this));
         }
     }

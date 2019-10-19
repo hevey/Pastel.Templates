@@ -16,4 +16,9 @@
       <ProjectReference Include="..\..\Pastel\Pastel.Core\Pastel.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="FirstScene.cs">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Compile>
+    </ItemGroup>
 </Project>
